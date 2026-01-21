@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الإعدادات - CinMax Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="rtl">
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1><i class="fas fa-cog"></i> الإعدادات</h1>
+        </div>
+
+        <div class="settings-content">
+            <!-- Pricing Settings -->
+            <div class="settings-section">
+                <h2><i class="fas fa-tags"></i> إعدادات التسعير</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label>سعر الفيلم (1-5 أفلام)</label>
+                        <div class="input-group">
+                            <input type="number" id="moviePrice" value="100" min="0">
+                            <span class="input-suffix">ريال</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>سعر الجيجا (6+ أفلام)</label>
+                        <div class="input-group">
+                            <input type="number" id="bulkPrice" value="50" min="0">
+                            <span class="input-suffix">ريال/جيجا</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>سعر المسلسلات</label>
+                        <div class="input-group">
+                            <input type="number" id="seriesPrice" value="50" min="0">
+                            <span class="input-suffix">ريال/جيجا</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>تحميل فيلم حسب الطلب</label>
+                        <div class="input-group">
+                            <input type="number" id="downloadMovie" value="150" min="0">
+                            <span class="input-suffix">ريال</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>تحميل مسلسل حسب الطلب</label>
+                        <div class="input-group">
+                            <input type="number" id="downloadSeries" value="100" min="0">
+                            <span class="input-suffix">ريال/جيجا</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Wallets -->
+            <div class="settings-section">
+                <h2><i class="fas fa-wallet"></i> المحافظ الإلكترونية</h2>
+                <div class="wallets-list" id="walletsList">
+                    <div class="wallet-item active">
+                        <span class="wallet-name">محفظة جيب</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة كاش</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة إيزي</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة الشامل</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">المتكاملة mPay</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة سبأ كاش</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة فلوسك</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">محفظة محفظتي</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">موبايل موني</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">ون كاش</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">جوالي</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="wallet-item">
+                        <span class="wallet-name">شامل موني</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <button class="btn-add-wallet" id="addWalletBtn">
+                    <i class="fas fa-plus"></i> إضافة محفظة جديدة
+                </button>
+            </div>
+
+            <!-- General Settings -->
+            <div class="settings-section">
+                <h2><i class="fas fa-sliders-h"></i> إعدادات عامة</h2>
+                <div class="settings-list">
+                    <div class="setting-toggle">
+                        <div class="setting-info">
+                            <span class="setting-label">التشغيل التلقائي مع الويندوز</span>
+                            <span class="setting-desc">تشغيل البرنامج تلقائياً عند بدء تشغيل الكمبيوتر</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="autoStart">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-toggle">
+                        <div class="setting-info">
+                            <span class="setting-label">العمل في الخلفية</span>
+                            <span class="setting-desc">استمرار عمل البرنامج عند إغلاق النافذة</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="runBackground" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-toggle">
+                        <div class="setting-info">
+                            <span class="setting-label">إزالة تلقائية بعد النسخ</span>
+                            <span class="setting-desc">إزالة الجهاز بأمان تلقائياً بعد اكتمال النسخ</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="autoEject">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-toggle">
+                        <div class="setting-info">
+                            <span class="setting-label">إشعارات صوتية</span>
+                            <span class="setting-desc">تشغيل صوت عند اكتمال النسخ أو توصيل جهاز</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="soundNotifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Paths -->
+            <div class="settings-section">
+                <h2><i class="fas fa-folder"></i> مسارات المحتوى</h2>
+                <p class="section-desc">حدد المجلدات التي تحتوي على محتوى الأفلام والمسلسلات</p>
+                <div class="paths-list" id="pathsList">
+                    <div class="path-item">
+                        <span class="path-type">أفلام أجنبي</span>
+                        <input type="text" class="path-input" value="D:\Movies\Foreign" readonly>
+                        <button class="btn-browse"><i class="fas fa-folder-open"></i></button>
+                    </div>
+                    <div class="path-item">
+                        <span class="path-type">مسلسلات تركي</span>
+                        <input type="text" class="path-input" value="D:\Series\Turkish" readonly>
+                        <button class="btn-browse"><i class="fas fa-folder-open"></i></button>
+                    </div>
+                </div>
+                <button class="btn-add-path" id="addPathBtn">
+                    <i class="fas fa-plus"></i> إضافة مسار
+                </button>
+            </div>
+
+            <!-- Language Settings -->
+            <div class="settings-section">
+                <h2><i class="fas fa-language"></i> اللغة</h2>
+                <div class="language-options">
+                    <label class="language-option active">
+                        <input type="radio" name="language" value="ar" checked>
+                        <span class="lang-name">العربية</span>
+                        <span class="lang-flag">🇾🇪</span>
+                    </label>
+                    <label class="language-option">
+                        <input type="radio" name="language" value="en">
+                        <span class="lang-name">English</span>
+                        <span class="lang-flag">🇺🇸</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Backup & Data -->
+            <div class="settings-section">
+                <h2><i class="fas fa-database"></i> النسخ الاحتياطي والبيانات</h2>
+                <div class="backup-actions">
+                    <button class="btn-backup" id="backupBtn">
+                        <i class="fas fa-download"></i>
+                        إنشاء نسخة احتياطية
+                    </button>
+                    <button class="btn-restore" id="restoreBtn">
+                        <i class="fas fa-upload"></i>
+                        استعادة نسخة احتياطية
+                    </button>
+                    <button class="btn-reset" id="resetBtn">
+                        <i class="fas fa-trash-alt"></i>
+                        مسح جميع البيانات
+                    </button>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="settings-section">
+                <h2><i class="fas fa-info-circle"></i> حول البرنامج</h2>
+                <div class="about-info">
+                    <div class="app-logo">
+                        <img src="../assets/logo.png" alt="CinMax Logo">
+                    </div>
+                    <div class="app-details">
+                        <h3>CinMax Store Copy Tracker</h3>
+                        <p>الإصدار 1.0.0</p>
+                        <p>برنامج إدارة وتتبع عمليات نسخ البيانات وتحليل الأرباح لكشك الأفلام</p>
+                        <p class="copyright">© 2025 جميع الحقوق محفوظة</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="settings-actions">
+                <button class="btn-save" id="saveSettingsBtn">
+                    <i class="fas fa-save"></i>
+                    حفظ الإعدادات
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .settings-container {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .settings-header h1 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .settings-section {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .settings-section h2 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .settings-section h2 i {
+            color: #e50914;
+        }
+
+        .section-desc {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .setting-item label {
+            display: block;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+
+        .input-suffix {
+            background: #333;
+            padding: 12px 15px;
+            color: #888;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+
+        .wallets-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .wallet-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .wallet-name {
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #333;
+            border-radius: 26px;
+            transition: 0.3s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        input:checked + .slider {
+            background: #e50914;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        .settings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .setting-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .setting-label {
+            color: #fff;
+            font-size: 14px;
+            display: block;
+        }
+
+        .setting-desc {
+            color: #666;
+            font-size: 12px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .btn-add-wallet,
+        .btn-add-path {
+            width: 100%;
+            padding: 12px;
+            background: rgba(229, 9, 20, 0.2);
+            border: 1px dashed #e50914;
+            color: #e50914;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-add-wallet:hover,
+        .btn-add-path:hover {
+            background: #e50914;
+            color: #fff;
+        }
+
+        .path-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .path-type {
+            min-width: 120px;
+            padding: 12px;
+            background: #333;
+            color: #fff;
+            border-radius: 8px 0 0 8px;
+            font-size: 14px;
+        }
+
+        .path-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
+            color: #888;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .btn-browse {
+            padding: 12px 15px;
+            background: #e50914;
+            border: none;
+            color: #fff;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+        }
+
+        .language-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .language-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .language-option.active,
+        .language-option:hover {
+            background: rgba(229, 9, 20, 0.2);
+            border: 1px solid #e50914;
+        }
+
+        .language-option input {
+            display: none;
+        }
+
+        .lang-name {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .lang-flag {
+            font-size: 24px;
+        }
+
+        .backup-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .backup-actions button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-backup {
+            background: #00a88a;
+            color: #fff;
+        }
+
+        .btn-restore {
+            background: #00a8e8;
+            color: #fff;
+        }
+
+        .btn-reset {
+            background: rgba(229, 9, 20, 0.2);
+            color: #e50914;
+        }
+
+        .btn-reset:hover {
+            background: #e50914;
+            color: #fff;
+        }
+
+        .about-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .app-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+        }
+
+        .app-details h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .app-details p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .settings-actions {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .btn-save {
+            padding: 15px 50px;
+            background: linear-gradient(145deg, #e50914, #b20710);
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+        }
+    </style>
+
+    <script src="../js/utils.js"></script>
+    <script>
+        // Settings page specific logic
+        document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+            const settings = {
+                pricing: {
+                    movie: parseInt(document.getElementById('moviePrice').value),
+                    bulk: parseInt(document.getElementById('bulkPrice').value),
+                    series: parseInt(document.getElementById('seriesPrice').value),
+                    downloadMovie: parseInt(document.getElementById('downloadMovie').value),
+                    downloadSeries: parseInt(document.getElementById('downloadSeries').value)
+                },
+                autoStart: document.getElementById('autoStart').checked,
+                runBackground: document.getElementById('runBackground').checked,
+                autoEject: document.getElementById('autoEject').checked,
+                soundNotifications: document.getElementById('soundNotifications').checked
+            };
+
+            Utils.storage.set('cinmax_settings', settings);
+
+            if (window.CinMaxApp) {
+                window.CinMaxApp.showNotification('تم حفظ الإعدادات بنجاح', 'success');
+            }
+        });
+
+        // Language change
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.language-option').forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

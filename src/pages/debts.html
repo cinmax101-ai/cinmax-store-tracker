@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الديون - CinMax Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="rtl">
+    <div class="debts-container">
+        <div class="debts-header">
+            <h1><i class="fas fa-hand-holding-usd"></i> سجل الديون</h1>
+            <div class="debts-summary">
+                <div class="summary-item">
+                    <span class="summary-label">إجمالي الديون</span>
+                    <span class="summary-value" id="totalDebts">0 ريال</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">عدد الزبائن</span>
+                    <span class="summary-value" id="totalCustomers">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="debts-filters">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchDebts" placeholder="ابحث باسم الزبون...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="unpaid">غير مسدد</button>
+                <button class="filter-btn" data-filter="paid">مسدد</button>
+            </div>
+        </div>
+
+        <div class="debts-list" id="debtsList">
+            <!-- Debt cards will be inserted here -->
+        </div>
+    </div>
+
+    <style>
+        .debts-container {
+            padding: 20px;
+        }
+
+        .debts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .debts-header h1 {
+            font-size: 28px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .debts-summary {
+            display: flex;
+            gap: 30px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-label {
+            display: block;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .summary-value {
+            display: block;
+            color: #e50914;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .debts-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: #1a1a2e;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #333;
+            color: #888;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #e50914;
+            border-color: #e50914;
+            color: #fff;
+        }
+
+        .debts-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .debt-card {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .debt-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .debt-card.paid {
+            opacity: 0.6;
+        }
+
+        .debt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .customer-name {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .debt-amount {
+            font-size: 20px;
+            color: #e50914;
+            font-weight: 700;
+        }
+
+        .debt-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .debt-details span {
+            color: #888;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .debt-details i {
+            color: #e50914;
+        }
+
+        .debt-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .debt-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-pay {
+            background: #00a88a;
+            color: #fff;
+        }
+
+        .btn-pay:hover {
+            background: #00c9a7;
+        }
+
+        .btn-remind {
+            background: rgba(247, 147, 30, 0.2);
+            color: #f7931e;
+        }
+
+        .btn-remind:hover {
+            background: #f7931e;
+            color: #fff;
+        }
+
+        .paid-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 212, 170, 0.2);
+            color: #00d4aa;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-state i {
+            font-size: 60px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .empty-state p {
+            font-size: 18px;
+        }
+    </style>
+
+    <script src="../js/utils.js"></script>
+    <script>
+        // Mock debts data
+        const mockDebts = [
+            {
+                id: 1,
+                customerName: 'أحمد محمد',
+                customerPhone: '771234567',
+                price: 500,
+                size: 10 * 1024 * 1024 * 1024,
+                timestamp: '2025-01-10T14:30:00',
+                isPaid: false,
+                contentType: 'مسلسلات تركي'
+            },
+            {
+                id: 2,
+                customerName: 'علي حسين',
+                customerPhone: '733456789',
+                price: 300,
+                size: 6 * 1024 * 1024 * 1024,
+                timestamp: '2025-01-09T10:00:00',
+                isPaid: false,
+                contentType: 'أفلام أجنبي'
+            },
+            {
+                id: 3,
+                customerName: 'محمد أحمد',
+                customerPhone: '777654321',
+                price: 200,
+                size: 4 * 1024 * 1024 * 1024,
+                timestamp: '2025-01-08T16:45:00',
+                isPaid: true,
+                contentType: 'أنمي'
+            }
+        ];
+
+        function renderDebts(debts) {
+            const container = document.getElementById('debtsList');
+            
+            if (debts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-check-circle"></i>
+                        <p>لا توجد ديون مسجلة</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = debts.map(d => `
+                <div class="debt-card ${d.isPaid ? 'paid' : ''}" data-id="${d.id}">
+                    <div class="debt-header">
+                        <span class="customer-name">${d.customerName}</span>
+                        <span class="debt-amount">${d.price} ريال</span>
+                    </div>
+                    <div class="debt-details">
+                        <span><i class="fas fa-phone"></i> ${d.customerPhone || 'غير محدد'}</span>
+                        <span><i class="fas fa-calendar"></i> ${Utils.formatDate(d.timestamp)}</span>
+                        <span><i class="fas fa-hdd"></i> ${Utils.formatSize(d.size)}</span>
+                        <span><i class="fas fa-film"></i> ${d.contentType}</span>
+                    </div>
+                    <div class="debt-actions">
+                        ${!d.isPaid ? `
+                            <button class="btn-pay" onclick="markAsPaid(${d.id})">
+                                <i class="fas fa-check"></i> تسديد
+                            </button>
+                            <button class="btn-remind" onclick="sendReminder(${d.id})">
+                                <i class="fas fa-bell"></i> تذكير
+                            </button>
+                        ` : '<span class="paid-badge"><i class="fas fa-check-circle"></i> مسدد</span>'}
+                    </div>
+                </div>
+            `).join('');
+
+            // Update summary
+            updateSummary(debts);
+        }
+
+        function updateSummary(debts) {
+            const unpaidDebts = debts.filter(d => !d.isPaid);
+            const totalAmount = unpaidDebts.reduce((sum, d) => sum + d.price, 0);
+            const uniqueCustomers = [...new Set(unpaidDebts.map(d => d.customerName))].length;
+
+            document.getElementById('totalDebts').textContent = `${totalAmount.toLocaleString()} ريال`;
+            document.getElementById('totalCustomers').textContent = uniqueCustomers;
+        }
+
+        function markAsPaid(debtId) {
+            const debt = mockDebts.find(d => d.id === debtId);
+            if (debt) {
+                debt.isPaid = true;
+                renderDebts(mockDebts);
+                if (window.CinMaxApp) {
+                    window.CinMaxApp.showNotification('تم تسديد الدين بنجاح', 'success');
+                }
+            }
+        }
+
+        function sendReminder(debtId) {
+            const debt = mockDebts.find(d => d.id === debtId);
+            if (debt) {
+                // In real app, this would send SMS or notification
+                alert(`سيتم إرسال تذكير إلى ${debt.customerName} على الرقم ${debt.customerPhone}`);
+            }
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                let filteredDebts = mockDebts;
+
+                if (filter === 'paid') {
+                    filteredDebts = mockDebts.filter(d => d.isPaid);
+                } else if (filter === 'unpaid') {
+                    filteredDebts = mockDebts.filter(d => !d.isPaid);
+                }
+
+                renderDebts(filteredDebts);
+            });
+        });
+
+        // Search functionality
+        document.getElementById('searchDebts').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filteredDebts = mockDebts.filter(d => 
+                d.customerName.toLowerCase().includes(query) ||
+                d.customerPhone.includes(query)
+            );
+            renderDebts(filteredDebts);
+        });
+
+        // Initial render
+        renderDebts(mockDebts);
+    </script>
+</body>
+</html>

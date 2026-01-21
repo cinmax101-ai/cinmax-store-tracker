@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;">
+    <title>CinMax Store - Copy Tracker</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="CinMax Logo" class="logo-img" onerror="this.style.display='none'">
+                <h1>CinMax</h1>
+                <span>Store Copy Tracker</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>لوحة التحكم</span>
+                </a>
+                <a href="#" class="nav-item" data-page="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="#" class="nav-item" data-page="debts">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>الديون</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator online">
+                    <i class="fas fa-check-circle"></i>
+                    <span>يعمل أوفلاين</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-right">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 id="pageTitle">لوحة التحكم</h2>
+                </div>
+                <div class="header-left">
+                    <button class="btn btn-icon" id="langToggle" title="تغيير اللغة">
+                        <i class="fas fa-language"></i>
+                    </button>
+                    <button class="btn btn-primary" id="newTransaction">
+                        <i class="fas fa-plus"></i>
+                        <span>عملية جديدة</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div class="page-content active" id="page-dashboard">
+                <!-- Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="todayRevenue">0 ريال</span>
+                            <span class="stat-label">إيرادات اليوم</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-copy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="todayOperations">0</span>
+                            <span class="stat-label">عمليات اليوم</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="todaySize">0 GB</span>
+                            <span class="stat-label">حجم البيانات</span>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="monthRevenue">0 ريال</span>
+                            <span class="stat-label">إيرادات الشهر</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Column -->
+                    <div class="dashboard-main">
+                        <!-- Copy Progress Card -->
+                        <div class="card" id="copyProgressCard" style="display: none;">
+                            <div class="card-header">
+                                <h3><i class="fas fa-sync-alt fa-spin"></i> عملية نسخ جارية</h3>
+                                <span class="status-badge active">نشط</span>
+                            </div>
+                            <div class="progress-section">
+                                <div class="progress-stats">
+                                    <div class="progress-stat">
+                                        <span class="progress-stat-value" id="progressPercent">0%</span>
+                                        <span class="progress-stat-label">مكتمل</span>
+                                    </div>
+                                    <div class="progress-stat">
+                                        <span class="progress-stat-value" id="copySpeed">0 MB/s</span>
+                                        <span class="progress-stat-label">السرعة</span>
+                                    </div>
+                                    <div class="progress-stat">
+                                        <span class="progress-stat-value" id="timeRemaining">--:--</span>
+                                        <span class="progress-stat-label">المتبقي</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="copyProgress" style="width: 0%"></div>
+                                </div>
+                                <div class="progress-details">
+                                    <span id="copySource">--</span>
+                                    <span id="copiedSize">0 / 0 GB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chart Card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line"></i> إحصائيات الإيرادات</h3>
+                                <div class="chart-filter">
+                                    <button class="filter-btn active" data-period="week">أسبوع</button>
+                                    <button class="filter-btn" data-period="month">شهر</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Recent Transactions -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-history"></i> آخر العمليات</h3>
+                                <a href="#" class="view-all" data-page="reports">عرض الكل</a>
+                            </div>
+                            <div class="transactions-list" id="recentTransactions">
+                                <!-- Transactions will be inserted here -->
+                                <div class="empty-state">
+                                    <i class="fas fa-inbox"></i>
+                                    <p>لا توجد عمليات بعد</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="dashboard-sidebar">
+                        <!-- Connected Devices -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-usb"></i> الأجهزة المتصلة</h3>
+                                <span class="device-count" id="deviceCount">0</span>
+                            </div>
+                            <div class="devices-list" id="connectedDevices">
+                                <div class="empty-state small">
+                                    <i class="fas fa-plug"></i>
+                                    <p>لا توجد أجهزة متصلة</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-block" id="safeEject">
+                                <i class="fas fa-eject"></i> إزالة بأمان
+                            </button>
+                        </div>
+
+                        <!-- Content Distribution -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-pie"></i> توزيع المحتوى</h3>
+                            </div>
+                            <div class="chart-container small">
+                                <canvas id="contentChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Debts Summary -->
+                        <div class="card debts-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-hand-holding-usd"></i> الديون</h3>
+                            </div>
+                            <div class="debts-summary">
+                                <div class="debts-amount" id="totalDebts">0 ريال</div>
+                                <div class="debts-count"><span id="debtsCount">0</span> زبون</div>
+                            </div>
+                            <a href="#" class="btn btn-block btn-outline" data-page="debts">
+                                عرض التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="action-btn" id="exportPdf">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>تصدير PDF</span>
+                    </button>
+                    <button class="action-btn" id="exportExcel">
+                        <i class="fas fa-file-excel"></i>
+                        <span>تصدير Excel</span>
+                    </button>
+                    <button class="action-btn" id="printReport">
+                        <i class="fas fa-print"></i>
+                        <span>طباعة</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div class="page-content" id="page-reports">
+                <iframe src="reports.html" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+
+            <!-- Debts Page -->
+            <div class="page-content" id="page-debts">
+                <iframe src="debts.html" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page-content" id="page-settings">
+                <iframe src="settings.html" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+        </main>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-cash-register"></i> تسجيل عملية دفع</h3>
+                <button class="modal-close" onclick="document.getElementById('paymentModal').classList.remove('active')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span>نوع المحتوى:</span>
+                        <span id="modalContentType">--</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>الحجم:</span>
+                        <span id="modalSize">--</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>المبلغ:</span>
+                        <span id="modalPrice">0 ريال</span>
+                    </div>
+                </div>
+                <div class="payment-methods">
+                    <h4>اختر طريقة الدفع:</h4>
+                    <div class="payment-options">
+                        <button class="payment-option" data-method="cash">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>نقداً</span>
+                        </button>
+                        <button class="payment-option" data-method="electronic">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>إلكتروني</span>
+                        </button>
+                        <button class="payment-option" data-method="credit">
+                            <i class="fas fa-clock"></i>
+                            <span>آجل</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit Modal -->
+    <div class="modal-overlay" id="creditModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-clock"></i> تسجيل دين جديد</h3>
+                <button class="modal-close" onclick="document.getElementById('creditModal').classList.remove('active')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="creditForm">
+                    <div class="form-group">
+                        <label for="customerName">اسم الزبون *</label>
+                        <input type="text" id="customerName" required placeholder="أدخل اسم الزبون">
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone">رقم الهاتف</label>
+                        <input type="tel" id="customerPhone" placeholder="7XXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="creditNotes">ملاحظات</label>
+                        <textarea id="creditNotes" rows="2" placeholder="ملاحظات إضافية..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-save"></i> حفظ الدين
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Electronic Payment Modal -->
+    <div class="modal-overlay" id="electronicModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-wallet"></i> اختر المحفظة</h3>
+                <button class="modal-close" onclick="document.getElementById('electronicModal').classList.remove('active')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="wallets-grid" id="walletsGrid">
+                    <button class="wallet-option" data-wallet="جيب">
+                        <span>محفظة جيب</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="كاش">
+                        <span>محفظة كاش</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="إيزي">
+                        <span>محفظة إيزي</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="الشامل">
+                        <span>محفظة الشامل</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="mPay">
+                        <span>المتكاملة mPay</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="سبأ كاش">
+                        <span>محفظة سبأ كاش</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="فلوسك">
+                        <span>محفظة فلوسك</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="محفظتي">
+                        <span>محفظة محفظتي</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="موبايل موني">
+                        <span>موبايل موني</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="ون كاش">
+                        <span>محفظة ون كاش</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="جوالي">
+                        <span>محفظة جوالي</span>
+                    </button>
+                    <button class="wallet-option" data-wallet="شامل موني">
+                        <span>شامل موني</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Container -->
+    <div class="notifications-container" id="notifications"></div>
+
+    <!-- Scripts -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/pricing-engine.js"></script>
+    <script src="../js/usb-monitor.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

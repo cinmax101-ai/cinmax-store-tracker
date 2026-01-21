@@ -1,0 +1,104 @@
+{
+    "app_name": "CinMax Store",
+    "dashboard": "لوحة التحكم",
+    "reports": "التقارير",
+    "debts": "الديون",
+    "settings": "الإعدادات",
+    
+    "today_revenue": "إيرادات اليوم",
+    "week_revenue": "إيرادات الأسبوع",
+    "month_revenue": "إيرادات الشهر",
+    "total_debts": "إجمالي الديون",
+    "operations": "عمليات",
+    "total_size": "حجم البيانات",
+    
+    "connected_devices": "الأجهزة المتصلة",
+    "no_devices": "لا توجد أجهزة متصلة",
+    "safe_eject": "إزالة بأمان",
+    
+    "copy_progress": "تقدم النسخ",
+    "speed": "السرعة",
+    "remaining": "المتبقي",
+    "copied": "تم نسخه",
+    
+    "recent_transactions": "آخر العمليات",
+    "view_all": "عرض الكل",
+    
+    "payment_methods": "طرق الدفع",
+    "cash": "نقداً",
+    "credit": "آجل",
+    "electronic": "إلكتروني",
+    
+    "content_types": "أنواع المحتوى",
+    "foreign_movies": "أفلام أجنبي",
+    "arabic_movies": "أفلام عربي",
+    "asian_movies": "أفلام آسيوي",
+    "turkish_movies": "أفلام تركي",
+    "animation": "أنميشن",
+    "anime": "أنمي",
+    "foreign_series": "مسلسلات أجنبي",
+    "turkish_series": "مسلسلات تركي",
+    "arabic_series": "مسلسلات عربي",
+    "korean_series": "مسلسلات كوري",
+    "japanese_anime": "أنمي ياباني",
+    "software": "برامج",
+    
+    "daily_report": "تقرير يومي",
+    "weekly_report": "تقرير أسبوعي",
+    "monthly_report": "تقرير شهري",
+    "yearly_report": "تقرير سنوي",
+    "content_report": "إحصائية المحتوى",
+    
+    "export_pdf": "تصدير PDF",
+    "export_excel": "تصدير Excel",
+    "print": "طباعة",
+    
+    "date_from": "من تاريخ",
+    "date_to": "إلى تاريخ",
+    
+    "customer_name": "اسم الزبون",
+    "customer_phone": "رقم الهاتف",
+    "amount": "المبلغ",
+    "notes": "ملاحظات",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    
+    "mark_paid": "تسديد",
+    "remind": "تذكير",
+    "paid": "مسدد",
+    "unpaid": "غير مسدد",
+    
+    "pricing_settings": "إعدادات التسعير",
+    "movie_price": "سعر الفيلم",
+    "series_price": "سعر الجيجا (مسلسلات)",
+    "download_movie": "تحميل فيلم",
+    "download_series": "تحميل مسلسل (لكل جيجا)",
+    
+    "general_settings": "إعدادات عامة",
+    "auto_start": "تشغيل تلقائي مع الويندوز",
+    "auto_eject": "إزالة تلقائية بعد النسخ",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "English",
+    
+    "wallets": "المحافظ الإلكترونية",
+    "add_wallet": "إضافة محفظة",
+    
+    "success": "نجاح",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "info": "معلومة",
+    
+    "copy_complete": "اكتملت عملية النسخ",
+    "device_connected": "تم توصيل جهاز",
+    "device_disconnected": "تم فصل جهاز",
+    "settings_saved": "تم حفظ الإعدادات",
+    "transaction_saved": "تم تسجيل العملية",
+    "debt_paid": "تم تسديد الدين",
+    "export_success": "تم تصدير التقرير بنجاح",
+    
+    "currency": "ريال يمني",
+    "yer": "ر.ي"
+}

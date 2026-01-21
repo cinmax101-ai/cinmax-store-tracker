@@ -1,0 +1,63 @@
+{
+    "name": "cinmax-store-tracker",
+    "version": "1.0.0",
+    "description": "نظام إدارة وتتبع عمليات نسخ البيانات لكشك الأفلام",
+    "main": "main.js",
+    "author": "CinMax Store",
+    "license": "MIT",
+    "scripts": {
+        "start": "electron .",
+        "dev": "electron . --dev",
+        "build": "node build.js",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "dependencies": {
+        "better-sqlite3": "^9.0.0",
+        "chokidar": "^3.5.3",
+        "electron-store": "^8.1.0",
+        "exceljs": "^4.3.0",
+        "pdfkit": "^0.13.0",
+        "usb-detection": "^4.14.1",
+        "drivelist": "^11.1.0",
+        "node-disk-info": "^1.3.0"
+    },
+    "devDependencies": {
+        "electron": "^27.0.0",
+        "electron-builder": "^24.6.4"
+    },
+    "build": {
+        "appId": "com.cinmax.store.tracker",
+        "productName": "CinMax Store Copy Tracker",
+        "copyright": "Copyright © 2025 CinMax",
+        "directories": {
+            "output": "dist",
+            "buildResources": "build"
+        },
+        "files": [
+            "**/*",
+            "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+            "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+            "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+            "!.editorconfig",
+            "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}"
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": ["x64"]
+                }
+            ],
+            "icon": "src/assets/icons/icon.ico"
+        },
+        "nsis": {
+            "oneClick": true,
+            "perMachine": false,
+            "allowToChangeInstallationDirectory": false,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "CinMax Store"
+        }
+    }
+}

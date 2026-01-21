@@ -1,0 +1,277 @@
+/**
+ * CinMax RTL (Right-to-Left) Styles
+ */
+
+/* Base RTL */
+[dir="rtl"],
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Font Family for Arabic */
+.rtl body {
+    font-family: 'Cairo', 'Tajawal', 'Arial', sans-serif;
+}
+
+/* Sidebar RTL */
+.rtl .sidebar {
+    right: 0;
+    left: auto;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+}
+
+.rtl .main-content {
+    margin-right: 280px;
+    margin-left: 0;
+}
+
+.rtl .sidebar.collapsed + .main-content {
+    margin-right: 80px;
+}
+
+/* Navigation Items */
+.rtl .nav-item {
+    flex-direction: row-reverse;
+}
+
+.rtl .nav-item i {
+    margin-left: 12px;
+    margin-right: 0;
+}
+
+.rtl .nav-item::before {
+    right: 0;
+    left: auto;
+}
+
+/* Cards */
+.rtl .stat-card,
+.rtl .device-item,
+.rtl .transaction-item {
+    flex-direction: row-reverse;
+}
+
+/* Icons Margin */
+.rtl .stat-icon,
+.rtl .device-icon,
+.rtl .transaction-icon {
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+/* Buttons with Icons */
+.rtl .btn i,
+.rtl .action-btn i,
+.rtl button i {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+/* Form Elements */
+.rtl input,
+.rtl select,
+.rtl textarea {
+    text-align: right;
+}
+
+.rtl .input-group {
+    flex-direction: row-reverse;
+}
+
+.rtl .input-group .input-icon {
+    right: 15px;
+    left: auto;
+}
+
+.rtl .input-group input {
+    padding-right: 45px;
+    padding-left: 15px;
+}
+
+/* Tables */
+.rtl table {
+    direction: rtl;
+}
+
+.rtl th,
+.rtl td {
+    text-align: right;
+}
+
+/* Payment Bars */
+.rtl .payment-bar {
+    direction: rtl;
+}
+
+.rtl .bar {
+    transform-origin: right;
+}
+
+/* Charts */
+.rtl .chart-container {
+    direction: ltr;
+}
+
+/* Notifications */
+.rtl .notifications-container {
+    right: auto;
+    left: 20px;
+}
+
+.rtl .notification {
+    flex-direction: row-reverse;
+}
+
+/* Modals */
+.rtl .modal-header {
+    flex-direction: row-reverse;
+}
+
+.rtl .modal-close {
+    left: 20px;
+    right: auto;
+}
+
+/* Dropdown */
+.rtl .dropdown-menu {
+    right: 0;
+    left: auto;
+    text-align: right;
+}
+
+/* Progress */
+.rtl .progress-bar {
+    transform-origin: right;
+}
+
+/* Device Cards */
+.rtl .eject-btn {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+/* Transaction Items */
+.rtl .transaction-amount {
+    text-align: right;
+}
+
+/* Breadcrumb */
+.rtl .breadcrumb {
+    flex-direction: row-reverse;
+}
+
+.rtl .breadcrumb-item::after {
+    content: '\\';
+    margin: 0 10px;
+}
+
+/* Tabs */
+.rtl .tabs {
+    flex-direction: row-reverse;
+}
+
+/* Pagination */
+.rtl .pagination {
+    flex-direction: row-reverse;
+}
+
+/* Search */
+.rtl .search-box input {
+    padding-right: 45px;
+    padding-left: 15px;
+}
+
+.rtl .search-box i {
+    right: 15px;
+    left: auto;
+}
+
+/* Date Picker */
+.rtl .date-range-picker {
+    flex-direction: row-reverse;
+}
+
+/* Report Types */
+.rtl .report-types {
+    flex-direction: row-reverse;
+}
+
+/* Content Stats */
+.rtl .content-item {
+    direction: rtl;
+}
+
+/* Insights */
+.rtl .insights-list li {
+    flex-direction: row-reverse;
+}
+
+/* Animations */
+.rtl .slide-in {
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Tooltips */
+.rtl [data-tooltip]::after {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Collapse Icon */
+.rtl .collapse-icon {
+    transform: rotate(180deg);
+}
+
+.rtl .sidebar.collapsed .collapse-icon {
+    transform: rotate(0deg);
+}
+
+/* Scrollbar */
+.rtl ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rtl ::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+.rtl ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+/* Print RTL */
+@media print {
+    .rtl {
+        direction: rtl;
+    }
+}
+
+/* Responsive RTL */
+@media (max-width: 768px) {
+    .rtl .sidebar {
+        transform: translateX(100%);
+    }
+    
+    .rtl .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .rtl .main-content {
+        margin-right: 0;
+    }
+}

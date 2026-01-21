@@ -1,0 +1,104 @@
+{
+    "app_name": "CinMax Store",
+    "dashboard": "Dashboard",
+    "reports": "Reports",
+    "debts": "Debts",
+    "settings": "Settings",
+    
+    "today_revenue": "Today's Revenue",
+    "week_revenue": "Week Revenue",
+    "month_revenue": "Month Revenue",
+    "total_debts": "Total Debts",
+    "operations": "Operations",
+    "total_size": "Data Size",
+    
+    "connected_devices": "Connected Devices",
+    "no_devices": "No devices connected",
+    "safe_eject": "Safe Eject",
+    
+    "copy_progress": "Copy Progress",
+    "speed": "Speed",
+    "remaining": "Remaining",
+    "copied": "Copied",
+    
+    "recent_transactions": "Recent Transactions",
+    "view_all": "View All",
+    
+    "payment_methods": "Payment Methods",
+    "cash": "Cash",
+    "credit": "Credit",
+    "electronic": "Electronic",
+    
+    "content_types": "Content Types",
+    "foreign_movies": "Foreign Movies",
+    "arabic_movies": "Arabic Movies",
+    "asian_movies": "Asian Movies",
+    "turkish_movies": "Turkish Movies",
+    "animation": "Animation",
+    "anime": "Anime",
+    "foreign_series": "Foreign Series",
+    "turkish_series": "Turkish Series",
+    "arabic_series": "Arabic Series",
+    "korean_series": "Korean Drama",
+    "japanese_anime": "Japanese Anime",
+    "software": "Software",
+    
+    "daily_report": "Daily Report",
+    "weekly_report": "Weekly Report",
+    "monthly_report": "Monthly Report",
+    "yearly_report": "Yearly Report",
+    "content_report": "Content Statistics",
+    
+    "export_pdf": "Export PDF",
+    "export_excel": "Export Excel",
+    "print": "Print",
+    
+    "date_from": "From Date",
+    "date_to": "To Date",
+    
+    "customer_name": "Customer Name",
+    "customer_phone": "Phone Number",
+    "amount": "Amount",
+    "notes": "Notes",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    
+    "mark_paid": "Mark Paid",
+    "remind": "Remind",
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    
+    "pricing_settings": "Pricing Settings",
+    "movie_price": "Movie Price",
+    "series_price": "Series Price (per GB)",
+    "download_movie": "Download Movie",
+    "download_series": "Download Series (per GB)",
+    
+    "general_settings": "General Settings",
+    "auto_start": "Auto start with Windows",
+    "auto_eject": "Auto eject after copy",
+    "language": "Language",
+    "arabic": "العربية",
+    "english": "English",
+    
+    "wallets": "E-Wallets",
+    "add_wallet": "Add Wallet",
+    
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    
+    "copy_complete": "Copy completed",
+    "device_connected": "Device connected",
+    "device_disconnected": "Device disconnected",
+    "settings_saved": "Settings saved",
+    "transaction_saved": "Transaction recorded",
+    "debt_paid": "Debt paid",
+    "export_success": "Report exported successfully",
+    
+    "currency": "Yemeni Rial",
+    "yer": "YER"
+}
